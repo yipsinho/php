@@ -287,16 +287,13 @@
     </form>
 EOD;
     echo $myForm;
-				echo "hi";
     if(isset($_POST['rfname'])) {
-					echo "hi2";
 		require_once("Connections/conn.php");
 		$sql = "SELECT * FROM Runner WHERE Email='" . $_POST['remail'] . "'";
 		$rs = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 		if(mysqli_num_rows($rs) > 0) 
 			echo "<h2>The email was used!</h2>";
 		else {
-			echo "hi3";
 			extract($_POST);
 			$sql = "INSERT INTO Runner (RunnerID, VolunteerID, Password, FirstName, LastName, Gender, DateOfBirth, Email, Country, ProfilePicture) Values (NULL, NULL, '$rpassword', '$rfname', '$rlname', '$rbGender', '$rdob', '$remail', '$rcountry', '$rpfpic')";
 			mysqli_query($conn, $sql) or die (mysqli_error($conn));
